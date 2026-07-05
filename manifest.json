@@ -4,30 +4,19 @@
   "description": "웹 페이지의 콘텐츠를 분석하여 사실 여부를 검증합니다.",
   "version": "0.0.1",
   "action": {
-    "default_popup": "src/popup/index.html",
-    "default_icon": {
-      "16": "favicon.svg",
-      "48": "favicon.svg",
-      "128": "favicon.svg"
-    }
+    "default_popup": "src/popup/index.html"
   },
   "background": {
-    "service_worker": "src/background/index.ts",
+    "service_worker": "src/background.ts",
     "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/content/index.ts"],
+      "js": ["src/content.ts"],
       "run_at": "document_idle"
     }
   ],
-  "options_page": "src/options/index.html",
-  "permissions": ["storage", "activeTab", "scripting"],
-  "host_permissions": ["<all_urls>"],
-  "icons": {
-    "16": "favicon.svg",
-    "48": "favicon.svg",
-    "128": "favicon.svg"
-  }
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"]
 }
