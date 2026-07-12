@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Fact Checker — 설정</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      body { max-width: 600px; margin: 0 auto; padding: 2rem; }
+      h1 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+      .form-group { margin-bottom: 1rem; }
+      .form-group label { font-weight: 600; margin-bottom: 0.25rem; display: block; }
+      .form-group input, .form-group select { width: 100%; }
+      .btn-row { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+      .btn-row button { flex: 1; }
+      .status { padding: 0.75rem; border-radius: 8px; margin-top: 1rem; text-align: center; display: none; }
+      .status.success { display: block; background: #d4edda; color: #155724; }
+      .status.error { display: block; background: #f8d7da; color: #721c24; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Web Fact Checker 설정</h1>
+      <form id="settings-form">
+        <div class="form-group">
+          <label for="llm-select">기본 LLM 제공자</label>
+          <select id="llm-select">
+            <option value="openai">OpenAI</option>
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="gemini">Gemini (Google)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="openai-key">OpenAI API 키</label>
+          <input type="password" id="openai-key" placeholder="sk-..." />
+        </div>
+
+        <div class="form-group">
+          <label for="claude-key">Claude API 키</label>
+          <input type="password" id="claude-key" placeholder="sk-ant-..." />
+        </div>
+
+        <div class="form-group">
+          <label for="gemini-key">Gemini API 키</label>
+          <input type="password" id="gemini-key" placeholder="AIza..." />
+        </div>
+
+        <div class="form-group">
+          <label for="cache-expiry">캐시 만료 (시간)</label>
+          <input type="number" id="cache-expiry" min="1" max="720" value="24" />
+        </div>
+
+        <div class="form-group">
+          <label for="max-text">최대 분석 텍스트 길이</label>
+          <input type="number" id="max-text" min="1000" max="30000" step="1000" value="8000" />
+        </div>
+
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:0.5rem;">
+            <input type="checkbox" id="auto-extract" />
+            페이지 로드 시 자동 본문 추출
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="outline">저장</button>
+          <button type="button" id="btn-reset" class="secondary">초기화</button>
+        </div>
+
+        <div id="status" class="status"></div>
+      </form>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

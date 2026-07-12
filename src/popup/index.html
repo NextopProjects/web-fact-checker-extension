@@ -1,12 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fact Checker</title>
+    <title>Web Fact Checker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="./styles/popup.css" />
   </head>
   <body>
-    <div id="app">Extension Ready</div>
+    <main class="container">
+      <header>
+        <h1>Web Fact Checker</h1>
+        <nav class="tabs">
+          <button class="tab active" data-panel="fact-check">팩트체크</button>
+          <button class="tab" data-panel="history">이력</button>
+          <button class="tab" data-panel="dashboard">대시보드</button>
+          <button class="tab" data-panel="settings">설정</button>
+        </nav>
+      </header>
+
+      <section id="panel-fact-check" class="panel active"></section>
+      <section id="panel-history" class="panel"></section>
+      <section id="panel-dashboard" class="panel"></section>
+      <section id="panel-settings" class="panel"></section>
+    </main>
+
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

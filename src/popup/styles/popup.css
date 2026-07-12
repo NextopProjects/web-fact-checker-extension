@@ -1,0 +1,177 @@
+:root {
+  --popup-width: 420px;
+  --popup-max-height: 560px;
+}
+
+body {
+  width: var(--popup-width);
+  max-height: var(--popup-max-height);
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+main.container {
+  padding: 1rem;
+  max-width: var(--popup-width);
+}
+
+header h1 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--pico-muted-border-color);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.4rem 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: var(--pico-muted-color);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--pico-primary);
+}
+
+.tab.active {
+  color: var(--pico-primary);
+  border-bottom-color: var(--pico-primary);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.panel h2 {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary-custom {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.result-card {
+  padding: 0.75rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  margin-bottom: 0.75rem;
+}
+
+.result-card .verdict {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.result-card .confidence {
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+  margin-bottom: 0.5rem;
+}
+
+.result-card .explanation {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.verdict-true { color: #2ecc71; }
+.verdict-false { color: #e74c3c; }
+.verdict-mixed { color: #f39c12; }
+.verdict-unverifiable { color: #95a5a6; }
+.verdict-misleading { color: #e67e22; }
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--pico-muted-color);
+}
+
+.error-message {
+  padding: 0.75rem;
+  background: #fdecea;
+  color: #b71c1c;
+  border-radius: var(--pico-border-radius);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--pico-muted-color);
+  font-size: 0.85rem;
+}
+
+.settings-form label {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.settings-form input,
+.settings-form select {
+  font-size: 0.85rem;
+}
+
+.history-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: var(--pico-card-background-color);
+}
+
+.history-item .history-meta {
+  font-size: 0.75rem;
+  color: var(--pico-muted-color);
+}
+
+.dashboard-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  font-size: 0.85rem;
+}
+
+.text-preview {
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem;
+}
+
+.source-link {
+  font-size: 0.75rem;
+  color: var(--pico-primary);
+  text-decoration: none;
+}
+
+.source-link:hover {
+  text-decoration: underline;
+}
