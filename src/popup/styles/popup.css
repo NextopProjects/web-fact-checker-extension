@@ -1,0 +1,351 @@
+/**
+ * 팝업 스타일
+ * pico.css + 커스텀 스타일
+ */
+
+/* pico.css CDN 로드 (index.html에서 처리) */
+
+/* 커스텀 스타일 */
+:root {
+  --wfc-primary: #3b82f6;
+  --wfc-success: #22c55e;
+  --wfc-warning: #f59e0b;
+  --wfc-danger: #ef4444;
+  --wfc-gray: #6b7280;
+}
+
+body {
+  width: 380px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.container {
+  padding: 1rem;
+}
+
+/* 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.header h1 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 버튼 */
+button {
+  cursor: pointer;
+}
+
+.btn-icon {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* 로딩 상태 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--pico-muted-border-color);
+  border-top-color: var(--wfc-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: var(--pico-muted-color);
+}
+
+/* 에러 상태 */
+.error {
+  padding: 1rem;
+  background-color: color-mix(in srgb, var(--wfc-danger) 10%, transparent);
+  border-radius: var(--pico-border-radius);
+  color: var(--wfc-danger);
+  text-align: center;
+}
+
+/* 결과 뷰 */
+.result {
+  padding: 1rem 0;
+}
+
+.score-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.score-circle.score-high {
+  background-color: var(--wfc-success);
+}
+
+.score-circle.score-medium {
+  background-color: var(--wfc-warning);
+}
+
+.score-circle.score-low {
+  background-color: var(--wfc-danger);
+}
+
+.score-label {
+  font-size: 0.875rem;
+  color: var(--pico-muted-color);
+}
+
+.summary {
+  padding: 1rem;
+  background-color: var(--pico-card-background-color);
+  border-radius: var(--pico-border-radius);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* 주장 목록 */
+.claims-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.claim-card {
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--pico-card-background-color);
+  border-radius: var(--pico-border-radius);
+  border-left: 4px solid var(--pico-muted-border-color);
+}
+
+.claim-card.verdict-true {
+  border-left-color: var(--wfc-success);
+}
+
+.claim-card.verdict-false {
+  border-left-color: var(--wfc-danger);
+}
+
+.claim-card.verdict-mixed {
+  border-left-color: var(--wfc-warning);
+}
+
+.claim-card.verdict-unverifiable {
+  border-left-color: var(--wfc-gray);
+}
+
+.claim-text {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.claim-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+  margin-bottom: 0.5rem;
+}
+
+.verdict-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+}
+
+.verdict-badge.verdict-true {
+  background-color: var(--wfc-success);
+}
+
+.verdict-badge.verdict-false {
+  background-color: var(--wfc-danger);
+}
+
+.verdict-badge.verdict-mixed {
+  background-color: var(--wfc-warning);
+}
+
+.verdict-badge.verdict-unverifiable {
+  background-color: var(--wfc-gray);
+}
+
+.claim-reasoning {
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+  line-height: 1.4;
+}
+
+.claim-sources {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.claim-sources summary {
+  cursor: pointer;
+  color: var(--pico-primary);
+}
+
+.claim-sources ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1rem;
+}
+
+/* 설정 뷰 */
+.settings {
+  padding: 1rem 0;
+}
+
+.settings h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.settings label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.settings input,
+.settings select {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* 히스토리 뷰 */
+.history {
+  padding: 1rem 0;
+}
+
+.history h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--pico-card-background-color);
+  border-radius: var(--pico-border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.history-item:hover {
+  background-color: color-mix(in srgb, var(--pico-primary) 10%, transparent);
+}
+
+.history-item-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.history-item-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+}
+
+/* 내보내기 버튼 */
+.export-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* 네비게이션 */
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.nav-tab {
+  flex: 1;
+  padding: 0.5rem;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--pico-muted-color);
+  transition: all 0.2s;
+}
+
+.nav-tab:hover {
+  color: var(--pico-primary);
+}
+
+.nav-tab.active {
+  color: var(--pico-primary);
+  border-bottom-color: var(--pico-primary);
+}
+
+/* 빈 상태 */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--pico-muted-color);
+}
+
+.empty-state-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
