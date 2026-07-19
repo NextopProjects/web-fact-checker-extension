@@ -30,17 +30,31 @@ const appElement = document.getElementById('app')
 function init(): void {
   console.log('[Popup] 초기화')
 
-  // 초기 렌더링
-  render()
-
   // 이벤트 리스너 등록
   setupEventListeners()
 
-  // 설정 조회
-  sendMessage({ type: 'GET_SETTINGS' })
+  // 설정 조회 후 렌더링
+  sendMessageWithResponse({ type: 'GET_SETTINGS' })
+    .then((response) => {
+      const res = response as { type: string; payload?: Settings }
+      if (res?.payload) {
+        currentSettings = res.payload
+      }
+      render()
+    })
+    .catch(() => {
+      render()
+    })
 
   // 히스토리 조회
-  sendMessage({ type: 'GET_HISTORY' })
+  sendMessageWithResponse({ type: 'GET_HISTORY' })
+    .then((response) => {
+      const res = response as { type: string; payload?: HistoryEntry[] }
+      if (res?.payload) {
+        currentHistory = res.payload
+      }
+    })
+    .catch(() => {})
 }
 
 /**
@@ -355,6 +369,10 @@ function handleMessage(message: { type: string; payload?: unknown }): void {
       // 설정 데이터
       if (message.payload) {
         currentSettings = message.payload as Settings
+        // 설정 화면이 활성화되어 있으면 재렌더링
+        if (currentState === 'settings') {
+          render()
+        }
       }
       break
 
@@ -362,6 +380,10 @@ function handleMessage(message: { type: string; payload?: unknown }): void {
       // 히스토리 데이터
       if (message.payload) {
         currentHistory = message.payload as HistoryEntry[]
+        // 히스토리 화면이 활성화되어 있으면 재렌더링
+        if (currentState === 'history') {
+          render()
+        }
       }
       break
 
